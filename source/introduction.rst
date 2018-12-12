@@ -44,4 +44,3 @@ Components and concepts
 :Oneclient: a client application allowing to access a space and mount it as a
   local file system. Oneclient can be used from VM, containers, desktop,...
   Other access is also possible via web interface or REST APIs.
-
