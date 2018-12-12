@@ -44,3 +44,17 @@ Components and concepts
 :Oneclient: a client application allowing to access a space and mount it as a
   local file system. Oneclient can be used from VM, containers, desktop,...
   Other access is also possible via web interface or REST APIs.
+
+
+Highlighted features
+````````````````````
+
+.. image:: _static/datahub-space-web.png
+
+.. image:: _static/datahub-space-oneclient.png
+
+.. image:: _static/datahub-replica-management.png
+
+.. image:: _static/datahub-metadata-management.png
+
+.. image:: _static/datahub-file-popularity-smarch-caching.png
