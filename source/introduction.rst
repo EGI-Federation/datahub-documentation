@@ -48,12 +48,42 @@ Components and concepts
 Highlighted features
 ````````````````````
 
-.. image:: _static/datahub-space-web.png
+.. figure:: _static/datahub-space-web.png
+   :alt: EGI DataHub space web view
 
-.. image:: _static/datahub-space-oneclient.png
+   Viewing a data space using the EGI DataHub web interface
 
-.. image:: _static/datahub-replica-management.png
+   Using the EGI DataHub web interface it's possible to manage the space.
 
-.. image:: _static/datahub-metadata-management.png
+.. figure:: _static/datahub-space-oneclient.png
+   :alt: EGI DataHub space oneclient console view
 
-.. image:: _static/datahub-file-popularity-smarch-caching.png
+   Viewing a data space in a console locally mounted using Oneclient
+
+   Using Oneclient it's possible to mount a space locally, and access it over a
+   POSIX interface, using files as they were storred locally. The file's blocks
+   are downloaded on demand.
+
+.. figure:: _static/datahub-replica-management.png
+   :alt: EGI DataHub file replica distribution
+
+   Viewing file distribution over the Oneproviders
+
+   In Onedata the file distribution is dong on a block basis, blocks will be
+   replicated on the fly, and it's possible to instrutmentize the replication.
+
+.. figure:: _static/datahub-metadata-management.png
+   :alt: EGI DataHub metadata management
+
+   Management of metadata using the web interface
+
+   Three different format of metadata can be attached to files: basic
+   (key/value), JSON and RDF. The metadata can be managed using the Web
+   interface and the APIs. It's also possible to create indexes and query them.
+
+.. figure:: _static/datahub-file-popularity-smarch-caching.png
+   :alt: EGI DataHub file popularity information
+
+   Viewing file popularity for smart caching
+
+   It's possible to view the popularity of a file and manage smart caching.
