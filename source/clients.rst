@@ -1,5 +1,4 @@
 .. toctree::
-.. sectnum::
 
 Clients
 -------
@@ -21,13 +20,13 @@ The following variables have to be exported:
 
 .. image:: _static/datahub-space-token.png
 
-```sh
-vagrant init ubuntu/xenial64
-vagrant up
-vagrant ssh
-curl -sS http://get.onedata.org/oneclient.sh | bash
-export ONECLIENT_ACCESS_TOKEN=<ACCESS_TOKEN_FROM>
-export ONECLIENT_PROVIDER_HOST=plg-cyfronet-01.datahub.egi.eu
-mkdir /tmp/space
-oneclient /tmp/space
-```
+.. code-block:: console
+
+   vagrant init ubuntu/xenial64
+   vagrant up
+   vagrant ssh
+   curl -sS http://get.onedata.org/oneclient.sh | bash
+   export ONECLIENT_ACCESS_TOKEN=<ACCESS_TOKEN_FROM>
+   export ONECLIENT_PROVIDER_HOST=plg-cyfronet-01.datahub.egi.eu
+   mkdir /tmp/space
+   oneclient /tmp/space

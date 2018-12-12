@@ -6,10 +6,11 @@ EGI DataHub
 ===========
 
 .. toctree::
+   :numbered:
    :maxdepth: 2
    :caption: Contents:
 
    introduction
-   providers
    clients
+   providers
    links
