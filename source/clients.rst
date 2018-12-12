@@ -13,7 +13,7 @@ Using the web interface
 
    Using EGI Check-in it's possible to connect with its institute credentials.
 
-.. image:: _static/datahub-welcome-screen.png
+.. figure:: _static/datahub-welcome-screen.png
    :alt: EGI DataHub landing page
 
    EGI DataHub landing page
@@ -21,7 +21,7 @@ Using the web interface
    On this page it's possible to have an overview of all the spaces and their
    supporting providers.
 
-.. image:: _static/datahub-space-info.png
+.. figure:: _static/datahub-space-info.png
    :alt: EGI DataHub spaces information
 
    Information about spaces supported by a Oneprovider
@@ -29,7 +29,7 @@ Using the web interface
    On this capture, the information about the spaces supported
    by a specific provider is displayed.
 
-.. image:: _static/datahub-browse-space.png
+.. figure:: _static/datahub-browse-space.png
    :alt: EGI DataHub browsing a space
 
    Information about spaces supported by a Oneprovider
@@ -46,7 +46,12 @@ required to generate an access token.
 
 Tokens have to be generated from the `DataHub` (Onezone) interface.
 
-.. image:: _static/datahub-space-token.png
+.. figure:: _static/datahub-space-token.png
+   :alt: EGI DataHub token management
+
+   Managing acccess tokens from EGI DataHub
+
+   The access tokens can be created and managed using the EGI DataHub web interface.
 
 Testing Oneclient in a Virtual Machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
