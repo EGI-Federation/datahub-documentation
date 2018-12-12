@@ -1,5 +1,5 @@
 <!--
-Thank you for opening an issue in our datahub documentation.
+Thank you for opening an issue in our documentation.
 Please use the template below to construct the issue.
 
 Dealing with issues:
