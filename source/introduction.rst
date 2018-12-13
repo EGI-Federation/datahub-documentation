@@ -15,34 +15,30 @@ Motivation
 Components and concepts
 ```````````````````````
 
-* :Space: a virtual volume where users will organize their data. A space is
-  supported by one or multiple Oneproviders providing actual storage resources
-
-:Onezone: a central component federating providers, it will take care of AAI
-  and other management tasks (like space creation). EGI DataHub is a Onezone
-  instance.
-
-:Oneprovider: a service that will provide storage resources to spaces. A
-  Oneprovider is typically deployed at a site near the local storage resources,
-  and can access local storage resources over multiple connectors (CEPH,
-  POSIX,...). A default Oneprovider is also connected to the EGI DataHub
+:Space: a virtual volume where users will organize their data. A space is
+        supported by one or multiple Oneproviders providing actual storage
+        resources
 
 :EGI DataHub: a Onedata Onezone, the federation and authentication service. SSO
               with all the connected storage providers (Oneprovider) through
               EGI Check-in
-:Oneprovider: data management component deployed in the data centres,
-              provisioning data and managing transfers. A default one is
-              operated for EGI by CYFRONET.
-:Space: a virtual volume where users organize data. A space is supported by one
-        or multiple Oneproviders
-:Oneclient: a client providing access to the spaces through a FUSE mount point
-            (local POSIX access)
+
+:Onezone: a central component federating providers, it will take care of AAI
+          and other management tasks (like space creation). EGI DataHub is a
+          Onezone instance.
+
+:Oneprovider: a data management component deployed in the data centres,
+              provisioning data and managing transfers. A Oneprovider is
+              typically deployed at a site near the local storage resources,
+              and can access local storage resources over multiple connectors
+              (CEPH, POSIX,...). A default one is operated for EGI by CYFRONET.
+
+:Oneclient: a client application providing access to the spaces through a FUSE
+            mount point (local POSIX access). Spaces are accessible as if they
+            were part of the local filesystem. Oneclient can be used from VM,
+            containers, desktop,...
 
             Web interfaces and APIs are also available
-
-:Oneclient: a client application allowing to access a space and mount it as a
-  local file system. Oneclient can be used from VM, containers, desktop,...
-  Other access is also possible via web interface or REST APIs.
 
 
 Highlighted features
