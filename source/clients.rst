@@ -41,8 +41,8 @@ Using the web interface
 Generating tokens for using Oneclient or APIs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to be able to access your spaces using `Oneclient` or `APIs`, it's
-required to generate an access token.
+.. important:: In order to be able to access your spaces using `Oneclient` or
+   `APIs`, it's required to generate an access token.
 
 Tokens have to be generated from the `DataHub` (Onezone) interface.
 
