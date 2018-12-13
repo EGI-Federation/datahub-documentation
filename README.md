@@ -9,6 +9,11 @@ Latest version always available at: http://egi-datahub.readthedocs.io/
 Documentation is written in reStructuredText, built using Sphinx and publihsed
 online using http://readthedocs.io.
 
+A good introduction to reStructuredText is
+http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html.
+The doc itself is done using reStructuredText and it's handy to be able to
+check the source code.
+
 ## Contributing
 
 As a community of practice, we welcome contributions which work smoother and help us be more inclusive.
