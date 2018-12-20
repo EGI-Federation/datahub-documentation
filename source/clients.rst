@@ -71,6 +71,8 @@ The following variables have to be exported in the container:
 * `ONECLIENT_ACCESS_TOKEN`: access token allowing to access **all** the spaces.
 * `ONECLIENT_PROVIDER_HOST`: name or IP of the Oneprovider the client should connect to.
 
+.. important:: In order to be able to use FUSE, the container should run in `privileged` mode.
+
 .. code-block:: console
 
    docker run -it --privileged centos:7 /bin/bash
@@ -107,6 +109,8 @@ The following variables have to be exported to be used in the container:
 * `ONECLIENT_ACCESS_TOKEN`: access token allowing to access **all** the spaces.
 * `ONECLIENT_PROVIDER_HOST`: name or IP of the Oneprovider the client should connect to.
 
+.. important:: In order to be able to use FUSE, the container should run in `privileged` mode.
+
 .. code-block:: console
 
    export ONECLIENT_ACCESS_TOKEN=<ACCESS_TOKEN_FROM_ONEZONE>
@@ -116,13 +120,12 @@ The following variables have to be exported to be used in the container:
    Getting configuration...
    Oneclient has been successfully mounted in '/mnt/oneclient'
 
-
 Now the client will run in the background and the data will now be available
 through `samba/CIFS` or `nfs` protocols:
 
 .. code-block:: console
 
-  # Identifying the IP of the container
+   # Identifying the IP of the container
    docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -ql)
    172.17.0.2
 
