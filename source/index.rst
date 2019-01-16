@@ -13,4 +13,5 @@ EGI DataHub
    introduction
    clients
    providers
+   api
    links
