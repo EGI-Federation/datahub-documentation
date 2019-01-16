@@ -94,8 +94,8 @@ other providers supporting the space.
 For a real production usage it's preferable to use the Oneclient container as a
 source for a volume mounted into another container.
 
-Testing Oneclient in a Oneclient docker container
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Testing Oneclient in a Oneclient docker container with NFS or samba
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Docker containers for the oneclient are available, the existing versions can be
 seen in docker hub: https://hub.docker.com/r/onedata/oneclient/tags
@@ -133,6 +133,40 @@ So the data can be accessed at
 
 * `smb://172.17.0.2/onedata`
 * `nfs://172.17.0.2/onedata`
+
+Testing Oneclient in a Oneclient docker container with local file access
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Another solution is to mount a local directory as a volume in the container,
+allowing to access both the working directory as well as the the Onedata spaces.
+
+In order to do this we will open a `bash` shell in the conainer then we will
+mount manually the Onedata spaces.
+
+* `ONECLIENT_ACCESS_TOKEN`: access token allowing to access **all** the spaces.
+* `ONECLIENT_PROVIDER_HOST`: name or IP of the Oneprovider the client should connect to.
+
+.. important:: In order to be able to use FUSE, the container should run in `privileged` mode.
+
+.. code-block:: console
+
+   export ONECLIENT_ACCESS_TOKEN=<ACCESS_TOKEN_FROM_ONEZONE>
+   export ONECLIENT_PROVIDER_HOST=plg-cyfronet-01.datahub.egi.eu
+   docker run -it --privileged -e ONECLIENT_ACCESS_TOKEN=$ONECLIENT_ACCESS_TOKEN -e ONECLIENT_PROVIDER_HOST=$ONECLIENT_PROVIDER_HOST -v $PWD:/mnt/src --entrypoint bash onedata/oneclient:18.02.0-rc13
+   root@aca612a84fb4:/tmp# oneclient /mnt/oneclient
+   Connecting to provider 'plg-cyfronet-01.datahub.egi.eu:443' using session ID: '1641165171427694510'...
+   Getting configuration...
+   Oneclient has been successfully mounted in '/mnt/oneclient'.
+   root@aca612a84fb4:/tmp# ls /mnt/oneclient
+   (...)
+   root@aca612a84fb4:/tmp# ls /mnt/src
+   (...)
+
+Now it's possible to use the following mount points:
+
+* `/mnt/oneclient`: the Onedata spaces
+* `/mnt/src`: the local directory (any abolute path could have been used
+  instead of $PWD that points to the working directory)
 
 Testing Oneclient in a Virtual Machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
