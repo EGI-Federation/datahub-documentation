@@ -3,10 +3,10 @@
 Clients
 -------
 
-The `Oneclient` code and basic documnentation is available on GitHub:
+The `Oneclient` code and basic documentation is available on GitHub:
 https://github.com/onedata/oneclient
 
-The officiel documentation is:
+The official documentation is:
 https://onedata.org/#/home/documentation/doc/using_onedata/oneclient.html
 
 Using the web interface
@@ -98,12 +98,12 @@ source for a volume mounted into another container.
 Testing Oneclient in a Oneclient docker container with NFS or samba
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Docker containers for the oneclient are available, the existing versions can be
+Docker containers for the Oneclient are available, the existing versions can be
 seen in docker hub: https://hub.docker.com/r/onedata/oneclient/tags
 
-It's possible to use the most recent version by specifying the `latest` tag,
-and it's also quite common to use a version identical to the other components
-versions that can be seen on the Onezone and Oneprovider pages.
+It's possible to use the most recent version by specifying the `latest` tag.
+We also recommend to use the same version that can be seen on the Onezone and
+Oneprovider pages.
 
 The following variables have to be exported to be used in the container:
 
@@ -139,9 +139,9 @@ Testing Oneclient in a Oneclient docker container with local file access
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Another solution is to mount a local directory as a volume in the container,
-allowing to access both the working directory as well as the the Onedata spaces.
+allowing to access both the working directory as well as the Onedata spaces.
 
-In order to do this we will open a `bash` shell in the conainer then we will
+In order to do this we will open a `bash` shell in the container then we will
 mount manually the Onedata spaces.
 
 * `ONECLIENT_ACCESS_TOKEN`: access token allowing to access **all** the spaces.
@@ -166,8 +166,8 @@ mount manually the Onedata spaces.
 Now it's possible to use the following mount points:
 
 * `/mnt/oneclient`: the Onedata spaces
-* `/mnt/src`: the local directory (any abolute path could have been used
-  instead of $PWD that points to the working directory)
+* `/mnt/src`: the local directory (any absolute path could have been used
+  instead of `$PWD` that points to the working directory)
 
 Testing Oneclient in a Virtual Machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

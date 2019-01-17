@@ -18,7 +18,7 @@ Federation of service providers
 
 .. image:: _static/datahub-federation-of-service-providers.png
 
-* Heterogenous backend storage
+* Heterogeneous backend storage
 * Common interfaces (Web, REST, POSIX, CDMI)
 * Common AAI with Check-in
 * Discovery of Datasets in the EGI DataHub
@@ -80,14 +80,14 @@ Packages for Ubuntu 16.04 and CentOS 7 are also available.
 Requirements for production
 ```````````````````````````
 
-* Powerful-enough Oneprovider
+* Powerful enough Oneprovider
   * RAM: 32GB
   * CPU: 8 vCPU
   * Disk: 50GB SSD
   * To be adjusted for the dataset and usage scenario
 
 * For high IOPS
-  * High-performance backend storage (CEPH)
+  * High performance backend storage (CEPH)
   * Low latency network
 
 * POSIX mounting

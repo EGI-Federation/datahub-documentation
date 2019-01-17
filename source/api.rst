@@ -3,7 +3,7 @@
 API
 ---
 
-It's possbile to do all operations using the Onedata API.
+It's possible to do all operations using the Onedata API.
 
 The official documentation is: https://onedata.org/#/home/api.
 

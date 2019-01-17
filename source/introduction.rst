@@ -19,13 +19,13 @@ Components and concepts
         supported by one or multiple Oneproviders providing actual storage
         resources
 
-:EGI DataHub: a Onedata Onezone, the federation and authentication service. SSO
-              with all the connected storage providers (Oneprovider) through
-              EGI Check-in
+:EGI DataHub: a Onedata Onezone, the federation and authentication service. Single
+              Sign On (SSO) with all the connected storage providers (Oneprovider)
+              through EGI Check-in
 
-:Onezone: a central component federating providers, it will take care of AAI
-          and other management tasks (like space creation). EGI DataHub is a
-          Onezone instance.
+:Onezone: a central component federating providers, it will take care of
+          Authentication and Authorization and other management tasks (like
+          space creation). EGI DataHub is a Onezone instance.
 
 :Oneprovider: a data management component deployed in the data centres,
               provisioning data and managing transfers. A Oneprovider is
@@ -35,11 +35,10 @@ Components and concepts
 
 :Oneclient: a client application providing access to the spaces through a FUSE
             mount point (local POSIX access). Spaces are accessible as if they
-            were part of the local filesystem. Oneclient can be used from VM,
+            were part of the local file system. Oneclient can be used from VM,
             containers, desktop,...
 
             Web interfaces and APIs are also available
-
 
 Highlighted features
 ````````````````````
