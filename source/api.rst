@@ -7,23 +7,24 @@ It's possible to do all operations using the Onedata API.
 
 The official documentation is: https://onedata.org/#/home/api.
 
-.. important:: In order to be able to access the `Onedata APIs`, ian access token is required. See below for instructions on how to generate one.
-    to generate an access token.
+.. important:: In order to be able to access the `Onedata APIs`, ian access
+   token is required. See below for instructions on how to generate one.
+   to generate an access token.
 
 Getting an API access token
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Tokens have to be generated from the `DataHub` (Onezone) interface as
+Tokens have to be generated from the **EGI DataHub** (Onezone) interface as
 documented in :ref:`auth-token-using-web-interface` or using a command line
 call as documented hereafter.
 
 The following variables should be set:
 
-* `OIDC_TOKEN`: OpenID Connect Access token, see
+* ``OIDC_TOKEN``: OpenID Connect Access token, see
   https://wiki.egi.eu/wiki/Federated_Cloud_OpenStack_Providers#Obtaining_an_access_token
   for obtaining it.
-* `ONEZONE_HOST`: name or IP of the Onezone host (to use Onezone API).
-* `ONEPROVIDER_HOST`: name or IP of the Oneprovider host (to use Oneprovider API).
+* ``ONEZONE_HOST``: name or IP of the Onezone host (to use Onezone API).
+* ``ONEPROVIDER_HOST``: name or IP of the Oneprovider host (to use Oneprovider API).
 
 .. code-block:: console
 
@@ -46,8 +47,8 @@ registered in the Onezone.
 
 The following variables should be set:
 
-* `API_ACCESS_TOKEN`: Onedata API access token
-* `ONEZONE_HOST`: name or IP of the Onezone host (to use Onezone API).
+* ``API_ACCESS_TOKEN``: `Onedata API access token <https://onedata.org/docs/doc/using_onedata/using_onedata_from_cli.html#authentication>`_
+* ``ONEZONE_HOST``: name or IP of the Onezone host (to use Onezone API).
 
 .. code-block:: console
 
