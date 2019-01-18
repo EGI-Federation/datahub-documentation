@@ -83,7 +83,7 @@ Packages for Ubuntu 16.04 and CentOS 7 are also available.
 Requirements for production
 ```````````````````````````
 
-* Powerful enough Oneprovider
+* Oneprovider
 
   * RAM: 32GB
   * CPU: 8 vCPU
