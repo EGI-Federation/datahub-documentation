@@ -51,7 +51,7 @@ Generating tokens for using Oneclient or APIs
 .. important:: In order to be able to access your spaces using `Oneclient` or
    `APIs`, it's required to generate an access token.
 
-Tokens have to be generated from the `DataHub` (Onezone) interface.
+Tokens have to be generated from the **EGI DataHub** (Onezone) interface.
 
 .. figure:: _static/datahub-space-token.png
    :alt: EGI DataHub token management
@@ -69,8 +69,8 @@ releases).
 
 The following variables have to be exported in the container:
 
-* `ONECLIENT_ACCESS_TOKEN`: access token allowing to access **all** the spaces.
-* `ONECLIENT_PROVIDER_HOST`: name or IP of the Oneprovider the client should connect to.
+* ``ONECLIENT_ACCESS_TOKEN``: access token allowing to access **all** the spaces.
+* ``ONECLIENT_PROVIDER_HOST``: name or IP of the Oneprovider the client should connect to.
 
 .. important:: In order to be able to use FUSE, the container should run in `privileged` mode.
 
@@ -88,8 +88,8 @@ The following variables have to be exported in the container:
    root@81dbd7e84438 /]# oneclient /tmp/space
    root@81dbd7e84438 /]# ls /tmp/space
 
-Here the data is mounted in `/tmp/space`, creating a file into it will push it
-to the oneprovider and it will be accessible up in the web interface and from
+Here the data is mounted in ``/tmp/space``, creating a file into it will push it
+to the Oneprovider and it will be accessible up in the web interface and from
 other providers supporting the space.
 
 For a real production usage it's preferable to use the Oneclient container as a
@@ -99,18 +99,19 @@ Testing Oneclient in a Oneclient docker container with NFS or samba
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Docker containers for the Oneclient are available, the existing versions can be
-seen in docker hub: https://hub.docker.com/r/onedata/oneclient/tags
+seen on the `Oneclient docker hub <https://hub.docker.com/r/onedata/oneclient/tags>`_.
 
-It's possible to use the most recent version by specifying the `latest` tag.
+It's possible to use the most recent version by specifying the ``latest`` tag.
 We also recommend using same version as shown on the Onezone and
 Oneprovider pages.
 
 The following variables have to be exported to be used in the container:
 
-* `ONECLIENT_ACCESS_TOKEN`: access token allowing to access **all** the spaces.
-* `ONECLIENT_PROVIDER_HOST`: name or IP of the Oneprovider the client should connect to.
+* ``ONECLIENT_ACCESS_TOKEN``: access token allowing to access **all** the spaces.
+* ``ONECLIENT_PROVIDER_HOST``: name or IP of the Oneprovider the client should connect to.
 
-.. important:: In order to be able to use FUSE, the container should run in `privileged` mode.
+.. important:: In order to be able to use FUSE, the container should run in
+   ``privileged`` mode.
 
 .. code-block:: console
 
@@ -122,7 +123,7 @@ The following variables have to be exported to be used in the container:
    Oneclient has been successfully mounted in '/mnt/oneclient'
 
 Now the client will run in the background and the data will now be available
-through `samba/CIFS` or `nfs` protocols:
+through **samba/CIFS** or **nfs** protocols:
 
 .. code-block:: console
 
@@ -132,20 +133,22 @@ through `samba/CIFS` or `nfs` protocols:
 
 So the data can be accessed at
 
-* `smb://172.17.0.2/onedata`
-* `nfs://172.17.0.2/onedata`
+* ``smb://172.17.0.2/onedata``
+* ``nfs://172.17.0.2/onedata``
 
 Testing Oneclient in a Oneclient docker container with local file access
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Another solution is to mount a local directory as a volume in the container,
-allowing to access both the working directory as well as the Onedata spaces.
+allowing to access both the working directory as well as the Onedata spaces,
+thus allowing to easily exchange files between a local directory and a Onedata
+space.
 
-In order to do this we will open a `bash` shell in the container then we will
+In order to do this we will open a ``bash`` shell in the container then we will
 mount manually the Onedata spaces.
 
-* `ONECLIENT_ACCESS_TOKEN`: access token allowing to access **all** the spaces.
-* `ONECLIENT_PROVIDER_HOST`: name or IP of the Oneprovider the client should connect to.
+* ``ONECLIENT_ACCESS_TOKEN``: access token allowing to access **all** the spaces.
+* ``ONECLIENT_PROVIDER_HOST``: name or IP of the Oneprovider the client should connect to.
 
 .. important:: In order to be able to use FUSE, the container should run in `privileged` mode.
 
@@ -165,17 +168,17 @@ mount manually the Onedata spaces.
 
 Now it's possible to use the following mount points:
 
-* `/mnt/oneclient`: the Onedata spaces
-* `/mnt/src`: the local directory (any absolute path could have been used
-  instead of `$PWD` that points to the working directory)
+* ``/mnt/oneclient``: the Onedata spaces
+* ``/mnt/src``: the local directory (any absolute path could have been used
+  instead of ``$PWD`` that points to the working directory)
 
 Testing Oneclient in a Virtual Machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following variables have to be exported:
 
-* `ONECLIENT_ACCESS_TOKEN`: access token allowing to access **all** the spaces.
-* `ONECLIENT_PROVIDER_HOST`: name or IP of the Oneprovider the client should connect to.
+* ``ONECLIENT_ACCESS_TOKEN``: access token allowing to access **all** the spaces.
+* ``ONECLIENT_PROVIDER_HOST``: name or IP of the Oneprovider the client should connect to.
 
 .. code-block:: console
 
@@ -192,8 +195,8 @@ It's possible to quickly test Oneclient using `Vagrant <https://www.vagrantup.co
 
 The following variables have to be exported:
 
-* `ONECLIENT_ACCESS_TOKEN`: access token allowing to access **all** the spaces.
-* `ONECLIENT_PROVIDER_HOST`: name or IP of the Oneprovider the client should connect to.
+* ``ONECLIENT_ACCESS_TOKEN``: access token allowing to access **all** the spaces.
+* ``ONECLIENT_PROVIDER_HOST``: name or IP of the Oneprovider the client should connect to.
 
 .. code-block:: console
 
