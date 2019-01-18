@@ -102,7 +102,7 @@ Docker containers for the Oneclient are available, the existing versions can be
 seen in docker hub: https://hub.docker.com/r/onedata/oneclient/tags
 
 It's possible to use the most recent version by specifying the `latest` tag.
-We also recommend to use the same version that can be seen on the Onezone and
+We also recommend using same version as shown on the Onezone and
 Oneprovider pages.
 
 The following variables have to be exported to be used in the container:
