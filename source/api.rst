@@ -7,7 +7,7 @@ It's possible to do all operations using the Onedata API.
 
 The official documentation is: https://onedata.org/#/home/api.
 
-.. important:: In order to be able to access the `Onedata APIs`, it's required
+.. important:: In order to be able to access the `Onedata APIs`, ian access token is required. See below for instructions on how to generate one.
     to generate an access token.
 
 Getting an API access token
