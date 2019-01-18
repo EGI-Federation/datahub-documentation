@@ -3,11 +3,11 @@
 Clients
 -------
 
-The `Oneclient` code and basic documentation is available on GitHub:
-https://github.com/onedata/oneclient
+The Oneclient code and basic documentation is available on
+`GitHub <https://github.com/onedata/oneclient>`_.
 
-The official documentation is:
-https://onedata.org/#/home/documentation/doc/using_onedata/oneclient.html
+The official documentation is hosted on the
+`Onedata homepage <https://onedata.org/#/home/documentation/doc/using_onedata/oneclient.html>`_.
 
 Using the web interface
 ^^^^^^^^^^^^^^^^^^^^^^^
