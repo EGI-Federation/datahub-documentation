@@ -51,20 +51,23 @@ Steps to use DataHub and Onedata
 ````````````````````````````````
 
 * Collecting and analysing dataset specificities
+
   * Number of files
   * Size of files
 
 * Preparing a pilot
+
   * Designing and validating usage model
   * Integrating Onedata with existing resources
 
 * Validating the pilot
 
 * Deploying a production setup
+
   * Ensuring hardware requirements are sufficient
+
     * RAM, CPU, Disk, Network,…
     * Storage backend
-
 
 Deploying Onedata
 `````````````````
@@ -81,14 +84,17 @@ Requirements for production
 ```````````````````````````
 
 * Powerful enough Oneprovider
+
   * RAM: 32GB
   * CPU: 8 vCPU
   * Disk: 50GB SSD
   * To be adjusted for the dataset and usage scenario
 
 * For high IOPS
+
   * High performance backend storage (CEPH)
   * Low latency network
 
 * POSIX mounting
+
   * Oneprovider close to the Oneclient

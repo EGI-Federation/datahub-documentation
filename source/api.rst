@@ -50,6 +50,7 @@ The following variables should be exported:
 * `ONEZONE_HOST`: name or IP of the Onezone host (to use Onezone API).
 
 .. code-block:: console
+
    # Getting the IDs of the available Handle Services
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
      -X GET \

@@ -43,7 +43,7 @@ Using the web interface
    The data space can be managed (ie. uploading/downloading/managing files and
    metadata, manging space access) using the web browser.
 
-.. _auth-token-using-web-interface
+.. _auth-token-using-web-interface:
 
 Generating tokens for using Oneclient or APIs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
