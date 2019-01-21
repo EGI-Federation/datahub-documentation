@@ -34,6 +34,22 @@ The following variables should be set:
      -H 'Content-type: application/json' -d '{}' \
      https://$ONEZONE_HOST/api/v3/onezone/user/client_tokens
 
+Testing the API with the REST client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A docker container with clients acting as wrappers around the API calls is
+available: ``onedata/rest-cli``. It's very convenient to discover and tests the
+API and can also print the underlying ``curl`` calls using the ``--dry-run``
+switch.
+
+.. code-block:: console
+
+   docker run -it onedata/rest-cli
+   export ONEZONE_HOST=https://datahub.egi.eu
+   export ONEZONE_API_KEY=<ACCESS_TOKEN>
+   onezone-rest-cli listEffectiveUserSpaces
+   onezone-rest-cli listEffectiveUserSpaces --dry-run.
+
 Registering a Handle for a file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
