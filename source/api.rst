@@ -18,6 +18,8 @@ Tokens have to be generated from the **EGI DataHub** (Onezone) interface as
 documented in :ref:`auth-token-using-web-interface` or using a command line
 call as documented hereafter.
 
+Bear in mind that a unique API tokens can be used with both Onezone and Oneprovider.
+
 The following variables should be set:
 
 * ``OIDC_TOKEN``: OpenID Connect Access token, see
@@ -38,8 +40,36 @@ Testing the API with the REST client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A docker container with clients acting as wrappers around the API calls is
-available: ``onedata/rest-cli``. It's very convenient to discover and tests the
-API and can also print the underlying ``curl`` calls using the ``--dry-run``
+available: ``onedata/rest-cli``. It's very convenient for discovering and
+testing the **Onezone** and **Oneprovider** API.
+
+.. code-block:: console
+
+   docker run -it onedata/rest-cli
+   # Exporting env for Onezone API
+   export ONEZONE_HOST=https://datahub.egi.eu
+   export ONEZONE_API_KEY=<ACCESS_TOKEN>
+   # Checking current user
+   onezone-rest-cli getCurrentUSer | jq '.'
+   # Listing all accessible spaces
+   onezone-rest-cli listEffectiveUserSpaces | jq '.'
+
+.. code-block:: console
+
+   docker run -it onedata/rest-cli
+   # Exporting env for Oneprovider API
+   export ONEPROVIDER_HOST=https://plg-cyfronet-01.datahub.egi.eu
+   export ONEPROVIDER_API_KEY=<ACCESS_TOKEN>
+   # Listing all spaces supported by the Oneprovider
+   oneprovider-rest-cli getAllSpaces | jq '.'
+   # Listing content of a space
+   oneprovider-rest-cli listFiles path='EGI Foundation/'
+   oneprovider-rest-cli listFiles path='EGI Foundation/CS3_dataset'
+
+Printing the raw REST calls of a wrapped command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Raw REST calls (used with ``curl``) can be printed using the ``--dry-run``
 switch.
 
 .. code-block:: console
@@ -47,42 +77,82 @@ switch.
    docker run -it onedata/rest-cli
    export ONEZONE_HOST=https://datahub.egi.eu
    export ONEZONE_API_KEY=<ACCESS_TOKEN>
-   onezone-rest-cli listEffectiveUserSpaces
-   onezone-rest-cli listEffectiveUserSpaces --dry-run.
+   # Listing all accessible spaces
+   onezone-rest-cli listEffectiveUserSpaces | jq '.'
+   # Printing the curl command without running it
+   onezone-rest-cli listEffectiveUserSpaces --dry-run
 
-Registering a Handle for a file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Working with PID / Handle
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It's possible to mint a Permanent Identifier (PID) for a space or subdirectory
+of a space using a handle service (like Handle.net) that is registered in the
+Onezone (EGI DataHub).
+
+Once done accessing the PID using its URL will redirect to the Onedata share,
+allowing to retrieve the files.
 
 Prerequisites: access to a Handle service registered in the Onezone.
-See
-https://onedata.org/#/home/documentation/doc/using_onedata/handle_services.html
+See the `Handle Service API documentation <https://onedata.org/#/home/documentation/doc/using_onedata/handle_services.html>`_
 for documentation on registering a new Handle service or ask a Onezone
 administrator to authorize you to use an existing Handle service already
 registered in the Onezone.
-
 
 The following variables should be set:
 
 * ``API_ACCESS_TOKEN``: `Onedata API access token <https://onedata.org/docs/doc/using_onedata/using_onedata_from_cli.html#authentication>`_
 * ``ONEZONE_HOST``: name or IP of the Onezone host (to use Onezone API).
+* ``ONEPROVIDER_HOST``: name or IP of the Oneprovider host (to use Oneprovider API)
 
 .. code-block:: console
 
    # Getting the IDs of the available Handle Services
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
-     -X GET \
-     "https://datahub.egi.eu/api/v3/onezone/user/handle_services"
+     "$HONEZONE_HOST/api/v3/onezone/user/handle_services"
    HANDLE_SERVICE=<HANDLE_SERVICE_ID>
+
    # Getting details about a specific Handle service
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
-     -X GET \
-     "https://$ONEZONE_HOST/api/v3/onezone/user/handle_services/$HANDLE_SERVICE"
-   # Getting the ID of a space or directory of a space
-   # TO BE DONE
-   RESOURCE=<RESOURCE_ID>
-   # Registering a handle
+     "$ONEZONE_HOST/api/v3/onezone/user/handle_services/$HANDLE_SERVICE"
+
+   # Listing a space
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
-     -H "Content-type: application/json" \
-     -X POST \
-     -d '{"handleServiceId": "$HANDLE_SERVICE", "resourceType": "Share", "resourceId": "$RESOURCE", "metadata": "..." }' \
-     https://$ONEZONE_HOST/api/v3/handles
+     "$ONEPROVIDER_HOST/api/v3/oneprovider/files/EGI%20Foundation/" | jq '.'
+
+   # Creating a share of a subdirectory of a space
+   DIR_ID_TO_SHARE=<DIR_ID>
+   curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
+     -X POST -H 'Content-Type: application/json' \
+     -d '{"name": "input"}'
+     "$ONEPROVIDER_HOST/api/v3/oneprovider/shares-id/$DIR_ID_TO_SHARE" | jq '.'
+
+   # Displaying the shate
+   SHARE_ID=<SHARED_ID>
+   curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
+      "$ONEZONE_HOST/api/v3/onezone/shares/$SHARE_ID" | jq '.'
+
+   # Registering a handle
+   # Proper Dublin Core metadata is required
+   # It can be created using https://nsteffel.github.io/dublin_core_generator/generator_nq.html
+   cat metadata.xml
+   # Escape double quotes and drop line return
+   METADATA=$(cat metadata.xml | sed 's/"/\\"/g' | tr '\n' ' ')
+   # On handle creation the created handles is provided in the Location header
+   curl -D - --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
+     -H "Content-type: application/json" -X POST \
+     -d '{"handleServiceId": "'"$HANDLE_SERVICE_ID"'", "resourceType": "Share", "resourceId": "'"$SHARE_ID"'", "metadata": "'"$METADATA"'"}' \
+     "$ONEZONE_HOST/api/v3/onezone/user/handles"
+
+   # Listing handles
+   curl --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
+     "$ONEZONE_HOST/api/v3/onezone/user/handles"
+
+   # Displaying a handle
+   HANDLE_ID=<HANDLE_ID>
+   curl --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
+     "$ONEZONE_HOST/api/v3/onezone/user/handles/$HANDLE_ID"
+
+   # Deleting a Handle (implication to be clarified, ID in handle service won't be touched)
+   curl --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
+     -X DELETE \
+     "$ONEZONE_HOST/api/v3/onezone/user/handles/$HANDLE_ID"
