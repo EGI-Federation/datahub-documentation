@@ -18,7 +18,8 @@ Tokens have to be generated from the **EGI DataHub** (Onezone) interface as
 documented in :ref:`auth-token-using-web-interface` or using a command line
 call as documented hereafter.
 
-Bear in mind that a unique API tokens can be used with both Onezone and Oneprovider.
+Bear in mind that a single API token can be used with both Onezone, Oneprovider
+and other Onedata APIs.
 
 The following variables should be set:
 
@@ -108,14 +109,22 @@ The following variables should be set:
 
    # Getting the IDs of the available Handle Services
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
-     "$HONEZONE_HOST/api/v3/onezone/user/handle_services"
+     "$ONEZONE_HOST/api/v3/onezone/user/handle_services"
    HANDLE_SERVICE=<HANDLE_SERVICE_ID>
 
    # Getting details about a specific Handle service
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
      "$ONEZONE_HOST/api/v3/onezone/user/handle_services/$HANDLE_SERVICE"
 
-   # Listing a space
+   # Listing all spaces
+   curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
+     "$ONEZONE_HOST/api/v3/onezone/effective_spaces/" | jq '.'
+
+   # Displaying details of a space
+   curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
+     "$ONEZONE_HOST/api/v3/onezone/spaces/$SPACE_ID" | jq '.'
+
+   # Listing content of a space
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
      "$ONEPROVIDER_HOST/api/v3/oneprovider/files/EGI%20Foundation/" | jq '.'
 
@@ -126,7 +135,7 @@ The following variables should be set:
      -d '{"name": "input"}'
      "$ONEPROVIDER_HOST/api/v3/oneprovider/shares-id/$DIR_ID_TO_SHARE" | jq '.'
 
-   # Displaying the shate
+   # Displaying the share
    SHARE_ID=<SHARED_ID>
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
       "$ONEZONE_HOST/api/v3/onezone/shares/$SHARE_ID" | jq '.'
@@ -150,9 +159,4 @@ The following variables should be set:
    # Displaying a handle
    HANDLE_ID=<HANDLE_ID>
    curl --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
-     "$ONEZONE_HOST/api/v3/onezone/user/handles/$HANDLE_ID"
-
-   # Deleting a Handle (implication to be clarified, ID in handle service won't be touched)
-   curl --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
-     -X DELETE \
      "$ONEZONE_HOST/api/v3/onezone/user/handles/$HANDLE_ID"
