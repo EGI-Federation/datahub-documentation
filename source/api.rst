@@ -118,7 +118,7 @@ The following variables should be set:
 
    # Listing all spaces
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
-     "$ONEZONE_HOST/api/v3/onezone/effective_spaces/" | jq '.'
+     "$ONEZONE_HOST/api/v3/onezone/user/effective_spaces/" | jq '.'
 
    # Displaying details of a space
    curl -sS --tlsv1.2 -H "X-Auth-Token: $API_ACCESS_TOKEN" \
