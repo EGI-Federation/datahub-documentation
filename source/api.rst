@@ -21,21 +21,34 @@ call as documented hereafter.
 Bear in mind that a single API token can be used with both Onezone, Oneprovider
 and other Onedata APIs.
 
+It's possible to retrieve the `CLIENT_ID`, `CLIENT_SECRET` and `REFRESH_TOKEN`
+using a `special OIDC client connected to Check-in <https://aai.egi.eu/fedcloud/>`_.
+
+.. code-block:: console
+
+   CLIENT_ID=<CLIENT_ID>
+   CLIENT_SECRET=<CLIENT_SECRET>
+   REFRESH_TOKEN=<REFRESH_TOKEN>
+   # Retrieving an OIDC token from Check-in
+   curl -X POST -u "$CLIENT_ID":"$CLIENT_SECRET"  \
+          -d "client_id=$CLIENT_ID&$CLIENT_SECRET&grant_type=refresh_token&refresh_token=$REDRESH_TOKEN&scope=openid%20email%20profile" \
+          'https://aai.egi.eu/oidc/token' | python -m json.tool;
+   # Token is in the `access_token` field of the response
+
 The following variables should be set:
 
-* ``OIDC_TOKEN``: OpenID Connect Access token, see
-  https://wiki.egi.eu/wiki/Federated_Cloud_OpenStack_Providers#Obtaining_an_access_token
+* ``OIDC_TOKEN``: OpenID Connect Access token.
   for obtaining it.
 * ``ONEZONE_HOST``: name or IP of the Onezone host (to use Onezone API).
 * ``ONEPROVIDER_HOST``: name or IP of the Oneprovider host (to use Oneprovider API).
 
 .. code-block:: console
 
-   ONEZONE_HOST=datahub.egi.eu
+   ONEZONE_HOST=https://datahub.egi.eu
    OIDC_TOKEN=<OIDC_ACCESS_TOKEN>
    curl -H "X-Auth-Token: egi:$OIDC_TOKEN" -X POST \
      -H 'Content-type: application/json' -d '{}' \
-     https://$ONEZONE_HOST/api/v3/onezone/user/client_tokens
+     "$ONEZONE_HOST/api/v3/onezone/user/client_tokens"
 
 Testing the API with the REST client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
