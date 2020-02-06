@@ -5,11 +5,10 @@ API
 
 Most if not all operations can be performed using the Onedata API.
 
-The official documentation is: https://onedata.org/#/home/api.
+The official documentation is at https://onedata.org/#/home/api.
 
-.. important:: In order to be able to access the `Onedata APIs`, ian access
+.. important:: In order to be able to access the `Onedata APIs`, an access
    token is required. See below for instructions on how to generate one.
-   to generate an access token.
 
 Getting an API access token
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -40,7 +39,6 @@ more information.
 The following variables should be set:
 
 * ``OIDC_TOKEN``: OpenID Connect Access token.
-  for obtaining it.
 * ``ONEZONE_HOST``: name or IP of the Onezone host (to use Onezone API).
 * ``ONEPROVIDER_HOST``: name or IP of the Oneprovider host (to use Oneprovider API).
 
@@ -101,11 +99,11 @@ switch.
 Working with PID / Handle
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-It's possible to mint a Permanent Identifier (PID) for a space or subdirectory
+It's possible to mint a Permanent Identifier (PID) for a space or a subdirectory
 of a space using a handle service (like Handle.net) that is registered in the
 Onezone (EGI DataHub).
 
-Once done accessing the PID using its URL will redirect to the Onedata share,
+Once done, accessing the PID using its URL will redirect to the Onedata share
 allowing to retrieve the files.
 
 Prerequisites: access to a Handle service registered in the Onezone.
