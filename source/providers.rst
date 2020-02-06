@@ -10,7 +10,7 @@ Transparent data access
 
 .. image:: _static/datahub-transparent-data-access.png
 
-* Clients uses one ore more providers to access data
+* Clients use one ore more providers to access data
 * Data can be accessed over multiple protocols
 
 Federation of service providers
