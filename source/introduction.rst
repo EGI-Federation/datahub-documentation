@@ -56,7 +56,7 @@ Highlighted features
    Viewing a data space in a console locally mounted using Oneclient
 
    Using Oneclient it's possible to mount a space locally, and access it over a
-   POSIX interface, using files as they were storred locally. The file's blocks
+   POSIX interface, using files as they were stored locally. The file's blocks
    are downloaded on demand.
 
 .. figure:: _static/datahub-replica-management.png
@@ -64,15 +64,15 @@ Highlighted features
 
    Viewing file distribution over the Oneproviders
 
-   In Onedata the file distribution is dong on a block basis, blocks will be
-   replicated on the fly, and it's possible to instrutmentize the replication.
+   In Onedata the file distribution is done on a block basis, blocks will be
+   replicated on the fly, and it's possible to instrument the replication.
 
 .. figure:: _static/datahub-metadata-management.png
    :alt: EGI DataHub metadata management
 
    Management of metadata using the web interface
 
-   Three different format of metadata can be attached to files: basic
+   Three different formats of metadata can be attached to files: basic
    (key/value), JSON and RDF. The metadata can be managed using the Web
    interface and the APIs. It's also possible to create indexes and query them.
 
