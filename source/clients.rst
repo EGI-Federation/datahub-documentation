@@ -3,7 +3,7 @@
 Clients
 -------
 
-The Oneclient code and basic documentation is available on
+The Oneclient code and basic documentation are available on
 `GitHub <https://github.com/onedata/oneclient>`_.
 
 The official documentation is hosted on the
@@ -17,7 +17,7 @@ Using the web interface
 
    Selecting EGI to connect using EGI Check-in
 
-   Using EGI Check-in it's possible to connect with its institute credentials.
+   Using EGI Check-in it's possible to connect with your institute credentials.
 
 .. figure:: _static/datahub-welcome-screen.png
    :alt: EGI DataHub landing page
@@ -41,7 +41,7 @@ Using the web interface
    Information about spaces supported by a Oneprovider
 
    The data space can be managed (ie. uploading/downloading/managing files and
-   metadata, manging space access) using the web browser.
+   metadata, managing space access) using the web browser.
 
 .. _auth-token-using-web-interface:
 
@@ -56,7 +56,7 @@ Tokens have to be generated from the **EGI DataHub** (Onezone) interface.
 .. figure:: _static/datahub-space-token.png
    :alt: EGI DataHub token management
 
-   Managing acccess tokens from EGI DataHub
+   Managing access tokens from EGI DataHub
 
    The access tokens can be created and managed using the EGI DataHub web interface.
 
@@ -64,7 +64,7 @@ Installing and testing Oneclient in a docker container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A quick and simple solution for testing is to install the client on demand in a
-container for a support Operating System flavor (mainly various CentOS and Ubuntu
+container for a supported Operating System flavor (mainly various CentOS and Ubuntu
 releases).
 
 The following variables have to be exported in the container:
@@ -89,7 +89,7 @@ The following variables have to be exported in the container:
    root@81dbd7e84438 /]# ls /tmp/space
 
 Here the data is mounted in ``/tmp/space``, creating a file into it will push it
-to the Oneprovider and it will be accessible up in the web interface and from
+to the Oneprovider and it will be accessible in the web interface and from
 other providers supporting the space.
 
 For a real production usage it's preferable to use the Oneclient container as a
@@ -102,7 +102,7 @@ Docker containers for the Oneclient are available, the existing versions can be
 seen on the `Oneclient docker hub <https://hub.docker.com/r/onedata/oneclient/tags>`_.
 
 It's possible to use the most recent version by specifying the ``latest`` tag.
-We also recommend using same version as shown on the Onezone and
+We also recommend using the same version as shown on the Onezone and
 Oneprovider pages.
 
 The following variables have to be exported to be used in the container:
@@ -122,7 +122,7 @@ The following variables have to be exported to be used in the container:
    Getting configuration...
    Oneclient has been successfully mounted in '/mnt/oneclient'
 
-Now the client will run in the background and the data will now be available
+Now the client will run in the background and the data will be available
 through **samba/CIFS** or **nfs** protocols:
 
 .. code-block:: console
